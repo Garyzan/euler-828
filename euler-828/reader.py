@@ -3,10 +3,10 @@ import os
 from problem import Problem
 
 def parse_problem(problem: str) -> Problem:
-    target, ops = problem.split(":")
+    target, operands = problem.split(":")
     target = int(target)
-    ops = [int(k) for k in ops.split(",")]
-    return Problem(target, ops)
+    operands = [int(k) for k in operands.split(",")]
+    return Problem(target, operands)
 
 def read_file(path : os.PathLike | str) -> list[Problem]:
     with open(path, "r") as f:
