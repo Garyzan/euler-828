@@ -1,18 +1,18 @@
 from numbers import Integral
-from typing import Callable
+from typing import Callable, Union
 
 class Expression:
 
-    operands : list[Integral, "Expression"] = []
+    operands : list[Union[Integral, "Expression"]] = []
     operators : list[Callable] = []
 
-    def __init__(self, operands : list = [], operators : list[Callable] = []) -> None:
-        assert all([type(operand) == Integral for operand in operands])
+    def __init__(self, operands : list[Union[Integral, "Expression"]] = [], operators : list[Callable] = []) -> None:
+        assert all([type(operand) in Union[Integral, "Expression"] for operand in operands])
         assert all([type(operator) == Callable for operator in operators])
         self.operands = operands
         self.operators = operators
 
-    def evaluate(self) -> Integral:
+    def evaluate(self) -> Integral :
         def num_gen():
             i = 0
             while i < len(self.operands):
@@ -27,6 +27,6 @@ class Expression:
                 raise FloatingPointError # We do not want to see any floating point numbers and this error unused anyways
         return temp_result
     
-    def add_operation(self, operand: Integral, operator: Callable) -> None:
+    def add_operation(self, operand: Union[Integral, "Expression"], operator: Callable) -> None:
         self.operands.append(operand)
         self.operators.append(operator)
