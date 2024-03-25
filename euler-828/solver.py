@@ -83,7 +83,7 @@ class Solver:
     def solve(self, problem : Problem) -> tuple[Integral, list[Expression]]:
 
         final_expr = []
-        min_score = sum(problem.operands)
+        min_score = sum(problem.operands) + 1
         expressions = self.build_expressions(problem.operands, len(problem.operands))
 
         for sublist in expressions:
@@ -97,7 +97,11 @@ class Solver:
                 if expr.score < min_score:
                     min_score = expr.score
                     final_expr = [expr]
+                    
                 else: final_expr.append(expr)
+        
+        if min_score > sum(problem.operands):
+            return 0, []
 
         return min_score, final_expr
 
