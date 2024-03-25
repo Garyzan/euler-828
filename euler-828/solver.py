@@ -33,16 +33,12 @@ class Solver:
 
     def build_expressions(self, operands : list[Integral], size : int) -> list[list[Expression]]:
         if size == 1:
-            print(f"Built expr of size 1")
             return [[Expression([k,], Node(k)) for k in operands],]
         
         sub_expressions = self.build_expressions(operands, size-1)
         sub_expressions.append([])
 
-        print(f"Building expr of size {size}")
-
         for i in range(1, floor(size/2)+1):
-            print(f"   Building from subexpr of size {i} and {size-i}")
             for (idx, i_tree) in enumerate(sub_expressions[i-1]):
 
                 start_idx = (0, idx+1)[i == size-i]
@@ -82,7 +78,6 @@ class Solver:
                                 except ZeroDivisionError:
                                     continue
                             sub_expressions[size-1].append(expr)
-        print(f"Built expr of size {size}")
         return sub_expressions
 
 
@@ -90,7 +85,6 @@ class Solver:
 
         final_expr = []
         min_score = sum(problem.operands)
-        print("Building Expressions")
         expressions = self.build_expressions(problem.operands, len(problem.operands))
 
         for sublist in tqdm(expressions):
