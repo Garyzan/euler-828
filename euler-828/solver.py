@@ -3,7 +3,6 @@ import operator as o
 
 from typing import Callable
 from numbers import Integral
-from tqdm import tqdm
 from math import floor
 
 from node import Node
@@ -87,7 +86,7 @@ class Solver:
         min_score = sum(problem.operands)
         expressions = self.build_expressions(problem.operands, len(problem.operands))
 
-        for sublist in tqdm(expressions):
+        for sublist in expressions:
             for expr in sublist:
                 if expr.score > min_score:
                     continue
