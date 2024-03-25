@@ -1,4 +1,5 @@
 from typing import Any
+
 # Node of a binary tree
 class Node:
     value : Any

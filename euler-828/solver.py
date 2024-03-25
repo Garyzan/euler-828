@@ -4,7 +4,7 @@ import operator as o
 from typing import Callable
 from numbers import Integral
 from tqdm import tqdm
-from math import ceil, floor
+from math import floor
 
 from node import Node
 from problem import Problem
@@ -43,8 +43,11 @@ class Solver:
 
         for i in range(1, floor(size/2)+1):
             print(f"   Building from subexpr of size {i} and {size-i}")
-            for i_tree in sub_expressions[i-1]:
-                for j_tree in sub_expressions[(size-i)-1]:
+            for (idx, i_tree) in enumerate(sub_expressions[i-1]):
+
+                start_idx = (0, idx+1)[i == size-i]
+
+                for j_tree in sub_expressions[(size-i)-1][start_idx:]:
 
                     if j_tree == i_tree:
                         continue
