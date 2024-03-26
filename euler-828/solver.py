@@ -101,5 +101,22 @@ def solve(problem : Problem) -> tuple[Integral, list[Expression]]:
     return min_score, final_expr
 
 
-    def plot_all_solutions(self, problem : Problem) -> None:
-        pass
+def plot_all_solutions(problem : Problem) -> dict[int, int]:
+
+    expressions = _build_expressions(problem.operands, len(problem.operands))
+    scores : dict[int, int] = {}
+    
+    for sublist in expressions:
+        for expr in sublist:
+            if expr.evaluate() == problem.target:
+                t_score = expr.score
+                scores.append(expr.score)
+            else:
+                t_score = 0
+
+            if t_score in scores.keys():
+                scores[t_score] += 1
+            else:
+                scores[t_score] = 1
+    
+    return scores
