@@ -1,5 +1,3 @@
-import operator as o
-
 from numbers import Integral
 
 class Problem:
