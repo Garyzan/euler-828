@@ -1,4 +1,4 @@
-import seaborn
+#import seaborn
 import operator as o
 
 from typing import Callable
@@ -19,8 +19,21 @@ class op:
 OPERATORS : list[op] = [op(o.add, True), op(o.sub, False), op(o.mul, True), op(o.truediv, False, True)]
 
 def sublist(l1 : list, l2 : list) -> bool:
-    """Returns `True` if l2 is a subset of l1. Also works if the lists contain
-    duplicate entries."""
+    """Check if a list is a sublist of another list. Also works if the lists contain
+    duplicate entries.
+    
+    Parameters
+    ----------
+    l1 : list
+        List which is assumed to be the parent list.
+    l2 : list
+        List which is assumed to be the sublist.
+    
+    Returns
+    -------
+    bool
+        Whether l2 is a sublist of l1.
+        """
     for k in set(l2):
         if l2.count(k) > l1.count(k):
             return False
@@ -30,9 +43,19 @@ def _build_expressions(operands : list[Integral], size : int) -> list[list[Expre
     """Recursively builds all unique expressions possible from the operands
     using multiplication, division, addition and subtraction where each operand
     can only be used once.
+
+    Parameters
+    ----------
+    operands : list of integers
+        Operands from which to construct the expressions.
+    size : int
+        Maximum size of constructed expressions.
     
-    Returns them as a list of lists, with the k-th list containing all
-    expressions using exactly k of the provided operands"""
+    Returns
+    -------
+    list of list of Expressions
+        All expressions with at most `size` operands, sorted ascendingly into sublists by number of operands.
+        """
     if size == 1:
         return [[Expression([k,], Node(k)) for k in operands],]
     
@@ -88,13 +111,31 @@ def _build_expressions(operands : list[Integral], size : int) -> list[list[Expre
 
 
 def solve(problem : Problem = None, target : Integral = None, operands : list[Integral] = None) -> tuple[Integral, list[Expression]]:
-    """Finds the solution(s) with the lowest sum of operands and returns it as
-    well as all expression with that score that yield the correct result.
-    Returns a score of 0 and an empty list if the target number cannot be
-    reached with the given operands.
+    """Finds the solution(s) with the lowest sum of operands 
 
     The function takes either a predefined Problem or a target and list of
     operands as arguments
+    
+    Parameters
+    ----------
+    problem : Problem
+        The problem to solve.
+    target : int
+        Target number.
+    operands : list of integers
+        Operands from which to construct the expressions.
+    
+    Returns
+    -------
+    int
+        The minimal score. `0` if the problem is not solvable.
+    list of Expressions
+        All expressions with the minimal score that yield the correct result.
+
+    Raises
+    ------
+    ValueError
+        If neither a problem nor a target number and operands are supplied
     """
     if problem is None:
         if target is None or operands is None:
@@ -126,8 +167,14 @@ def solve(problem : Problem = None, target : Integral = None, operands : list[In
     return min_score, final_expr
 
 
-def plot_all_solutions(problem : Problem) -> dict[int, int]:
-
+def plot_all_solutions(problem : Problem = None, target : Integral = None, operands : list[Integral] = None) -> dict[int, int]:
+    """TBD
+    """
+    if problem is None:
+        if target is None or operands is None:
+            raise ValueError("You need to provide either a problem or a target number and a list of operands")
+        problem = Problem(target, operands)
+    
     expressions = _build_expressions(problem.operands, len(problem.operands))
     scores : dict[int, int] = {}
     

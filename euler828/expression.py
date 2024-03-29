@@ -3,7 +3,17 @@ from node import Node
 from numbers import Integral
 
 class Expression:
-    """Representation of a mathematical expression using a binary tree."""
+    """Representation of a mathematical expression using a binary tree.
+    
+    Attributes
+    ----------
+    tree : Node
+        Root of the binary tree representing the expression.
+    operands : list of integers
+        Operands from which to construct the expressions.
+    score : int
+        Score of the expression. Calculated as the sum of all operands.
+    """
 
     tree: Node
     operands : list[Integral]
@@ -19,7 +29,18 @@ class Expression:
         an integer.
 
         If at any point a subexpression yields a non-integral value, a
-        `FloatingPointError` is raised."""
+        `FloatingPointError` is raised.
+        
+        Returns
+        -------
+        int
+            The result of evluating the mathematical expression it represents.
+
+        Raises
+        ------
+        FloatingPointError
+            If this expressions or any subexpression evaluates to a non-integer
+        """
         if isinstance(self.tree.value, Integral):
             return self.tree.value
 
