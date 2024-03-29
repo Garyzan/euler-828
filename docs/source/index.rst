@@ -1,10 +1,10 @@
-.. Euler-828 documentation master file, created by
-   sphinx-quickstart on Tue Mar 26 16:24:00 2024.
+.. euler828 documentation master file, created by
+   sphinx-quickstart on Fri Mar 29 22:53:02 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Euler-828's documentation!
-=====================================
+Welcome to euler828's documentation!
+====================================
 
 .. toctree::
    :maxdepth: 2

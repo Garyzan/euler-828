@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Euler-828'
+project = 'euler828'
 copyright = '2024, Timo van Meegdenburg'
 author = 'Timo van Meegdenburg'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0'
+release = '0.1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -39,7 +39,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = []
 
 
 # -- Options for HTML output -------------------------------------------------
