@@ -1,6 +1,10 @@
 from numbers import Integral
 
 class Problem:
+    """Mathematical problem in the sense of the ProjectEuler problem 828.
+    
+    Consists of a list of operands with which to reach a certain target number.
+    """
     target : Integral = 0
     operands : list[Integral] = []
 

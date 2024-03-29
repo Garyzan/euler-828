@@ -1,7 +1,7 @@
 from typing import Any
 
-# Node of a binary tree
 class Node:
+    """Node of a binary tree."""
     value : Any
     left : "Node"
     right : "Node"

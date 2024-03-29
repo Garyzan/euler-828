@@ -18,20 +18,29 @@ class op:
 
 OPERATORS : list[op] = [op(o.add, True), op(o.sub, False), op(o.mul, True), op(o.truediv, False, True)]
 
-# checks if l2 is sublist of l1
-def sublist(l1, l2):
+def sublist(l1 : list, l2 : list) -> bool:
+    """Returns `True` if l2 is a subset of l1. Also works if the lists contain
+    duplicate entries."""
     for k in set(l2):
         if l2.count(k) > l1.count(k):
             return False
     return True
 
 def _build_expressions(operands : list[Integral], size : int) -> list[list[Expression]]:
+    """Recursively builds all unique expressions possible from the operands
+    using multiplication, division, addition and subtraction where each operand
+    can only be used once.
+    
+    Returns them as a list of lists, with the k-th list containing all
+    expressions using exactly k of the provided operands"""
     if size == 1:
         return [[Expression([k,], Node(k)) for k in operands],]
     
     sub_expressions = _build_expressions(operands, size-1)
     sub_expressions.append([])
 
+    # build all possible unique expressions by iterating through all unique
+    # combinations of expressions whose lengths sum to the desired length
     for i in range(1, floor(size/2)+1):
         for (idx, i_tree) in enumerate(sub_expressions[i-1]):
 
@@ -50,6 +59,7 @@ def _build_expressions(operands : list[Integral], size : int) -> list[list[Expre
 
                     expr = Expression(new_ops, Node(operator.fun, i_tree, j_tree))
 
+                    # Check if the operator could cause an invalid result
                     if operator.risky:
                         try:
                             expr.evaluate()
@@ -60,7 +70,8 @@ def _build_expressions(operands : list[Integral], size : int) -> list[list[Expre
 
                     sub_expressions[size-1].append(expr)
 
-                    #if the operator is not associative, create new expression with swapped operands
+                    # If the operator is not associative, create new expression 
+                    # with swapped operands
                     if not operator.associative:
                         expr = Expression(new_ops, Node(operator.fun, j_tree, i_tree))
 
@@ -72,10 +83,23 @@ def _build_expressions(operands : list[Integral], size : int) -> list[list[Expre
                             except ZeroDivisionError:
                                 continue
                         sub_expressions[size-1].append(expr)
+                        
     return sub_expressions
 
 
-def solve(problem : Problem) -> tuple[Integral, list[Expression]]:
+def solve(problem : Problem = None, target : Integral = None, operands : list[Integral] = None) -> tuple[Integral, list[Expression]]:
+    """Finds the solution(s) with the lowest sum of operands and returns it as
+    well as all expression with that score that yield the correct result.
+    Returns a score of 0 and an empty list if the target number cannot be
+    reached with the given operands.
+
+    The function takes either a predefined Problem or a target and list of
+    operands as arguments
+    """
+    if problem is None:
+        if target is None or operands is None:
+            raise ValueError("You need to provide either a problem or a target number and a list of operands")
+        problem = Problem(target, operands)
 
     final_expr = []
     min_score = sum(problem.operands) + 1
@@ -95,6 +119,7 @@ def solve(problem : Problem) -> tuple[Integral, list[Expression]]:
 
             else: final_expr.append(expr)
     
+    # check whether no solution has been found
     if min_score > sum(problem.operands):
         return 0, []
 
