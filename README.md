@@ -44,7 +44,3 @@ from euler828 import solve
 
 score, expressions = solve(target = 10, operands = [1,2,5])
 ```
-
-## Testing
-
-TBD
