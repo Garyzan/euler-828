@@ -14,9 +14,9 @@ Welcome to euler828's documentation!
    API <modules>
    Example <notebooks/example.ipynb>
 
-Indices and tables
-==================
+Description
+-----------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Homepage for the algorithm to solve mathematical problems such as "Make an equation yielding 300 with the operands 2, 3, 3, 5 and 7".
+
+It generates solutions by building up binary trees which represent the equations from smaller subexpressions.
