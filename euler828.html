@@ -335,8 +335,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.reader.read_file"><code class="docutils literal notranslate"><span class="pre">read_file()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828-solver-module">euler828.solver module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-euler828.solver">euler828.solver module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.solver.op"><code class="docutils literal notranslate"><span class="pre">op</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.solver.plot_all_solutions"><code class="docutils literal notranslate"><span class="pre">plot_all_solutions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.solver.solve"><code class="docutils literal notranslate"><span class="pre">solve()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.solver.sublist"><code class="docutils literal notranslate"><span class="pre">sublist()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-euler828">Module contents</a></li>
 </ul>
             </nav>
         </div>
@@ -536,11 +542,106 @@ an integer.</p>
 </dd></dl>
 
 </section>
-<section id="euler828-solver-module">
-<h2>euler828.solver module<a class="headerlink" href="#euler828-solver-module" title="Link to this heading">#</a></h2>
+<section id="module-euler828.solver">
+<span id="euler828-solver-module"></span><h2>euler828.solver module<a class="headerlink" href="#module-euler828.solver" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="euler828.solver.op">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">euler828.solver.</span></span><span class="sig-name descname"><span class="pre">op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">associative</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">risky</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/euler828/solver.html#op"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#euler828.solver.op" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="euler828.solver.plot_all_solutions">
+<span class="sig-prename descclassname"><span class="pre">euler828.solver.</span></span><span class="sig-name descname"><span class="pre">plot_all_solutions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#euler828.problem.Problem" title="euler828.problem.Problem"><span class="pre">Problem</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Integral</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Integral</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/euler828/solver.html#plot_all_solutions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#euler828.solver.plot_all_solutions" title="Link to this definition">#</a></dt>
+<dd><p>Plots a scatterplot of all possible scores and the number of times they occur and also returns it as a dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>problem</strong><span class="classifier">Problem</span></dt><dd><p>The problem to solve.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">int</span></dt><dd><p>Target number.</p>
+</dd>
+<dt><strong>operands</strong><span class="classifier">list of integers</span></dt><dd><p>Operands from which to construct the expressions.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict of int to int</dt><dd><p>Dictionary mapping all the scores of all unique correct equations to the number of unique correct equations with that score.</p>
+</dd>
+<dt>Axes</dt><dd><p>Scatterplot of key value pairs of the above dictionary.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TypeError</dt><dd><p>If neither a problem nor a target number and operands are supplied.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="euler828.solver.solve">
+<span class="sig-prename descclassname"><span class="pre">euler828.solver.</span></span><span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#euler828.problem.Problem" title="euler828.problem.Problem"><span class="pre">Problem</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Integral</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Integral</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Integral</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#euler828.expression.Expression" title="euler828.expression.Expression"><span class="pre">Expression</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/euler828/solver.html#solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#euler828.solver.solve" title="Link to this definition">#</a></dt>
+<dd><p>Finds the solution(s) with the lowest sum of operands.</p>
+<p>The function takes either a predefined Problem or a target and list of
+operands as arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>problem</strong><span class="classifier">Problem</span></dt><dd><p>The problem to solve.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">int</span></dt><dd><p>Target number.</p>
+</dd>
+<dt><strong>operands</strong><span class="classifier">list of integers</span></dt><dd><p>Operands from which to construct the expressions.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>int</dt><dd><p>The minimal score. <cite>0</cite> if the problem is not solvable.</p>
+</dd>
+<dt>list of Expressions</dt><dd><p>All expressions with the minimal score that yield the correct result.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TypeError</dt><dd><p>If neither a problem nor a target number and operands are supplied.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="euler828.solver.sublist">
+<span class="sig-prename descclassname"><span class="pre">euler828.solver.</span></span><span class="sig-name descname"><span class="pre">sublist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/euler828/solver.html#sublist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#euler828.solver.sublist" title="Link to this definition">#</a></dt>
+<dd><p>Check if a list is a sublist of another list. Also works if the lists contain
+duplicate entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l1</strong><span class="classifier">list</span></dt><dd><p>List which is assumed to be the parent list.</p>
+</dd>
+<dt><strong>l2</strong><span class="classifier">list</span></dt><dd><p>List which is assumed to be the sublist.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Whether l2 is a sublist of l1.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-euler828">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-euler828" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -622,8 +723,14 @@ an integer.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.reader.read_file"><code class="docutils literal notranslate"><span class="pre">read_file()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828-solver-module">euler828.solver module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-euler828.solver">euler828.solver module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.solver.op"><code class="docutils literal notranslate"><span class="pre">op</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.solver.plot_all_solutions"><code class="docutils literal notranslate"><span class="pre">plot_all_solutions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.solver.solve"><code class="docutils literal notranslate"><span class="pre">solve()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler828.solver.sublist"><code class="docutils literal notranslate"><span class="pre">sublist()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-euler828">Module contents</a></li>
 </ul>
   </nav></div>
 
