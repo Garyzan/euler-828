@@ -39,7 +39,9 @@ class Expression:
         Raises
         ------
         FloatingPointError
-            If this expressions or any subexpression evaluates to a non-integer
+            If this expression or any subexpression evaluates to a non-integer
+        ZeroDivisionError
+            If this expression or any subexpression tries to divide by zero
         """
         if isinstance(self.tree.value, Integral):
             return self.tree.value

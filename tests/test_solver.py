@@ -1,13 +1,11 @@
 import pytest
-
-import euler828.solver as solver
+from euler828 import solver
 
 problem_1 = [211, [2,3,4,6,7,25]]
 sol_1 = [40, 2]
 
 problem_2 = [1000000, [1, 3, 5, 7, 9, 11]]
 sol_2 = [0, 0]
-
 
 @pytest.mark.parametrize("problem, expected_solution", [(problem_1, sol_1), (problem_2, sol_2)])
 def test_solve(problem, expected_solution):
@@ -17,3 +15,6 @@ def test_solve(problem, expected_solution):
     assert len(expressions) == expected_solution[1]
     assert all([expression.evaluate() == problem[0] for expression in expressions])
     assert all([expression.score == expected_solution[0] for expression in expressions])
+
+def test_plot_all():
+    pass
