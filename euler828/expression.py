@@ -50,10 +50,11 @@ class Expression:
         right_val = self.tree.right.evaluate()
 
         result = self.tree.value(left_val, right_val)
+        print(result)
 
         # We do not want to see any floating point numbers and this error is
         # unused anyways
-        if not isinstance(result, Integral):
+        if not (int(result) == result):
             raise FloatingPointError
 
         return result
