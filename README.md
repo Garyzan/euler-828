@@ -1,6 +1,6 @@
 # Project Euler Problem 828 Equation Solver
 ![docs](https://github.com/garyzan/euler-828/actions/workflows/docs.yml/badge.svg)
-![test coverage](https://github.com/garyzan/euler-828/actions/workflows/tests.yml/badge.svg)
+![tests](https://github.com/garyzan/euler-828/actions/workflows/tests.yml/badge.svg)
 [![release](https://img.shields.io/badge/release-v0.1.0-blue.svg)](https://img.shields.io/badge/release-v0.1.0-blue.svg)
 [![license](https://img.shields.io/badge/license-GPLv3-green.svg)](https://img.shields.io/badge/license-GPLv3-green.svg)
 
