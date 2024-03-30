@@ -1,9 +1,10 @@
 import os
 
-from problem import Problem
+from .problem import Problem
 
 def parse_problem(problem: str) -> Problem:
-    """Parses a single line of the format `[target]:[operand],[operand],...`.
+    """Parses a string yontaining a problem in the format
+    `[target]:[operand],[operand],...`.
     
     Parameters
     ----------
@@ -21,8 +22,8 @@ def parse_problem(problem: str) -> Problem:
     return Problem(target, operands)
 
 def read_file(path : os.PathLike | str) -> list[Problem]:
-    """Parses a file in which every line contains a problem as defined by the 
-    `Problem` class in the format `[target]:[operand],[operand],...`.
+    """Parses a file in which every line contains a problem in the format
+    `[target]:[operand],[operand],...`.
 
     Parameters
     ----------

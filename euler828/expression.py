@@ -1,4 +1,4 @@
-from node import Node
+from .node import Node
 
 from numbers import Integral
 
@@ -34,7 +34,7 @@ class Expression:
         Returns
         -------
         int
-            The result of evluating the mathematical expression it represents.
+            The result of evaluating the mathematical expression it represents.
 
         Raises
         ------

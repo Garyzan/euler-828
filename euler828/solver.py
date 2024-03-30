@@ -5,9 +5,9 @@ from typing import Callable
 from numbers import Integral
 from math import floor
 
-from node import Node
-from problem import Problem
-from expression import Expression
+from .node import Node
+from .problem import Problem
+from .expression import Expression
 
 # Operator with extra properties
 class op:
@@ -182,7 +182,6 @@ def plot_all_solutions(problem : Problem = None, target : Integral = None, opera
         for expr in sublist:
             if expr.evaluate() == problem.target:
                 t_score = expr.score
-                scores.append(expr.score)
             else:
                 t_score = 0
 
