@@ -5,7 +5,7 @@ import euler828.solver as solver
 problem_1 = [211, [2,3,4,6,7,25]]
 sol_1 = [40, 2]
 
-problem_2 = [10, [1,3,15,43,76,80]]
+problem_2 = [1000000, [1, 3, 5, 7, 9, 11]]
 sol_2 = [0, 0]
 
 
