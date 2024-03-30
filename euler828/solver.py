@@ -1,4 +1,4 @@
-#import seaborn
+import seaborn as sns
 import operator as o
 
 from typing import Callable
@@ -111,10 +111,10 @@ def _build_expressions(operands : list[Integral], size : int) -> list[list[Expre
 
 
 def solve(problem : Problem = None, target : Integral = None, operands : list[Integral] = None) -> tuple[Integral, list[Expression]]:
-    """Finds the solution(s) with the lowest sum of operands 
+    """Finds the solution(s) with the lowest sum of operands.
 
     The function takes either a predefined Problem or a target and list of
-    operands as arguments
+    operands as arguments.
     
     Parameters
     ----------
@@ -134,12 +134,12 @@ def solve(problem : Problem = None, target : Integral = None, operands : list[In
 
     Raises
     ------
-    ValueError
-        If neither a problem nor a target number and operands are supplied
+    TypeError
+        If neither a problem nor a target number and operands are supplied.
     """
     if problem is None:
         if target is None or operands is None:
-            raise ValueError("You need to provide either a problem or a target number and a list of operands")
+            raise TypeError("You need to provide either a problem or a target number and a list of operands")
         problem = Problem(target, operands)
 
     final_expr = []
@@ -168,11 +168,33 @@ def solve(problem : Problem = None, target : Integral = None, operands : list[In
 
 
 def plot_all_solutions(problem : Problem = None, target : Integral = None, operands : list[Integral] = None) -> dict[int, int]:
-    """TBD
+    """Plots a scatterplot of all possible scores and the number of times they occur and also returns it as a dict.
+
+    Parameters
+    ----------
+    problem : Problem
+        The problem to solve.
+    target : int
+        Target number.
+    operands : list of integers
+        Operands from which to construct the expressions.
+    
+    Returns
+    -------
+    dict of int to int
+        Dictionary mapping all the scores of all unique correct equations to the number of unique correct equations with that score.
+    Axes
+        Scatterplot of key value pairs of the above dictionary.
+
+    Raises
+    ------
+    TypeError
+        If neither a problem nor a target number and operands are supplied.
+
     """
     if problem is None:
         if target is None or operands is None:
-            raise ValueError("You need to provide either a problem or a target number and a list of operands")
+            raise TypeError("You need to provide either a problem or a target number and a list of operands")
         problem = Problem(target, operands)
     
     expressions = _build_expressions(problem.operands, len(problem.operands))
@@ -190,4 +212,9 @@ def plot_all_solutions(problem : Problem = None, target : Integral = None, opera
             else:
                 scores[t_score] = 1
     
-    return scores
+    g = sns.scatterplot(x=scores.keys(), y=scores.values())
+    g.set_yscale("log")
+    g.axes.grid()
+    _ = g.set(xlabel = "Score", ylabel = "Occurences")
+
+    return scores, g.axes

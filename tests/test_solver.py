@@ -1,5 +1,6 @@
 import pytest
-from euler828 import solver
+import matplotlib.pyplot as plt
+from euler828 import solver, Problem
 
 problem_1 = [211, [2,3,4,6,7,25]]
 sol_1 = [40, 2]
@@ -17,4 +18,8 @@ def test_solve(problem, expected_solution):
     assert all([expression.score == expected_solution[0] for expression in expressions])
 
 def test_plot_all():
-    pass
+    problem = Problem(10, [1,2,5,9])
+    result, axes = solver.plot_all_solutions(problem)
+    assert all([a == b for a, b in zip(sorted(result.keys()), [0,7,8,10,12,17])])
+    assert all([a == b for a, b in zip(sorted(result.values()), [1,1,3,5,5,1218])])
+    assert isinstance(axes, plt.Axes)
